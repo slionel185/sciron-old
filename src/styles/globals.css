@@ -11,3 +11,7 @@
         height: -webkit-fill-available;
     }
 }
+
+#animate-stay {
+    animation-fill-mode: forwards;
+}

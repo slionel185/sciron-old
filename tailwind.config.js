@@ -7,23 +7,31 @@ module.exports = {
     ],
     theme: {
         extend: {
-            backgroundImage: {
-                'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
-                'gradient-conic':
-                    'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
+            keyframes: {
+                'skew-card': {
+                    '0%': { transform: 'skewY(0)' },
+                    '100%': { transform: 'skewY(-4deg)', scale: '90%' }
+                }
             },
-        },
+            animation: {
+                'skew-card': 'skew-card 3s ease-in-out 1s'
+            }
+        }
     },
     plugins: [require('daisyui')],
     daisyui: {
         themes: [
             {
                 mytheme: {
-                    primary: '#9147FF',
+                    text: '#5F5F5F',
+                    primary: '#772CE8',
                     secondary: '#A970FF',
                     accent: '#00DB84',
                     neutral: '#292524',
-                    'base-100': '#0E0E10',
+                    'base-100': '#131316',
+                    'base-200': '#161618',
+                    'base-300': '#18181B',
+                    'dark': '#0c0c0d',
                     info: '#3abff8',
                     success: '#36d399',
                     warning: '#fbbd23',
