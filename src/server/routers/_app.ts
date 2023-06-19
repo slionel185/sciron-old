@@ -1,7 +1,10 @@
-import { z } from 'zod'
+import { router } from '@/server/trpc'
+import { fetch } from '@/server/routers/commands/fetch'
+import { create } from '@/server/routers/commands/create'
 
-import { procedure, router } from '@/server/trpc'
-
-export const appRouter = router({})
+export const appRouter = router({
+    fetchCommands: fetch,
+    createCommand: create
+})
 
 export type AppRouter = typeof appRouter

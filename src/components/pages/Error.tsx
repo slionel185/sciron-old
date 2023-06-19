@@ -1,22 +1,27 @@
-import Image from 'next/image'
 import { ScaleLoader } from 'react-spinners'
 
-import Logo from '@/../public/Logo.png'
-
 export default function Error({ size }: { size: 'screen' | 'full' }) {
+
+    const error_msgs = [
+        'Maybe you are the problem...',
+        'Listen man I am TRYING',
+        'This shit is FUCKED yo',
+        'Brokedededed',
+        'Mannnnnnnn, again....'
+    ]
+
+    const selected = error_msgs[(Math.floor(Math.random() * error_msgs.length))]
+
     if(size === 'screen') return (
-        <div className='h-full flex flex-col justify-center items-center'>
-            <Image src={Logo} alt='Logo' height={128} />
-            <h1 className='text-5xl font-black italic uppercase text-primary pb-8'>Sciron</h1>
+        <div className='h-full w-full flex flex-col bg-base-100 justify-center items-center'>
             <ScaleLoader color='#772CE8' />
         </div>
     )
 
     if(size === 'full') return (
-        <div className='h-full flex flex-col justify-center items-center'>
-            <Image src={Logo} alt='Logo' height={128} />
-            <h1 className='text-5xl font-black italic uppercase text-primary pb-8'>Sciron</h1>
-            <ScaleLoader color='#772CE8' />
+        <div className='h-full w-full flex flex-col bg-base-100 gap-4 justify-center items-center'>
+            <h1 className='text-xl text-error'>{selected}</h1>
+            <ScaleLoader color='#f87272' speedMultiplier={0.25} />
         </div>
     )
 }

@@ -4,6 +4,7 @@ import { useRouter } from 'next/router'
 import { HiMenuAlt2 }  from 'react-icons/hi'
 import { signOut, useSession } from 'next-auth/react'
 
+import Loader from '@/components/pages/Loader'
 import CommandWrapper from '@/components/pages/CommandWrapper'
 import TwitchChatWrapper from '@/components/pages/TwitchChatWrapper'
 import TwitchStreamWrapper from '@/components/pages/TwitchStreamWrapper'
@@ -16,6 +17,8 @@ export default function Dashboard() {
     useEffect(() => {
         if(session.status === 'unauthenticated') router.push('/')
     }, [session])
+
+    if(session.status === 'loading') return <Loader size='screen' logo={true} />
 
     return (
         <div className='drawer h-screen'>
@@ -47,7 +50,7 @@ export default function Dashboard() {
                 <div className='h-full flex flex-col lg:grid gap-4 grid-cols-3 grid-rows-3 p-4 bg-base-300'>
                     <TwitchStreamWrapper />
                     <TwitchChatWrapper />
-                    <CommandWrapper />
+                    <CommandWrapper name={session.data!.user.name!} userId={session.data!.user.id} />
                 </div>
             </div>
             <div className='drawer-side'>
