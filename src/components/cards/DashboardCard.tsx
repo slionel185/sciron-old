@@ -32,10 +32,10 @@ export default function DashboardCard() {
                 </div>
                 <div className='w-full bg-base-300 rounded-xl overflow-clip grid gap-2 grid-cols-3 grid-rows-3 p-2'>
                     <div className='flex col-span-2 row-span-2 rounded-xl overflow-hidden'>
-                        <TwitchPlayer parent={env.NEXTAUTH_URL} className='rounded-xl h-full w-full overflow-hidden' channel={streamer} muted={true} />
+                        <TwitchPlayer parent={env.NEXT_PUBLIC_PARENT_URL} className='rounded-xl h-full w-full overflow-hidden' channel={streamer} muted={true} />
                     </div>
                     <div className='row-span-3 flex flex-col justify-end'>
-                        <TwitchChat parent={env.NEXTAUTH_SECRET} className='h-full w-full' channel={streamer} height='100%' width='100%'  />
+                        <TwitchChat parent={env.NEXT_PUBLIC_PARENT_URL} className='h-full w-full' channel={streamer} height='100%' width='100%'  />
                     </div>
                     <div className='col-span-2 grid grid-cols-2 grid-flow-row rounded-xl bg-base-200 p-2 gap-2 overflow-x-hidden overflow-y-auto'>
                         <div className='flex flex-row w-full justify-between items-center p-2 h-14 bg-base-300 rounded-lg'>

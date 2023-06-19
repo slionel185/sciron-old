@@ -2,7 +2,9 @@ import { z } from 'zod'
 import { createEnv } from '@t3-oss/env-nextjs'
 
 export const env = createEnv({
-    client: {},
+    client: {
+        NEXT_PUBLIC_PARENT_URL: z.string()
+    },
     server: {
         DATABASE_URL: z.string(),
         NEXTAUTH_URL: z.string().url(),
@@ -11,6 +13,7 @@ export const env = createEnv({
         TWITCH_CLIENT_SECRET: z.string(),
     },
     runtimeEnv: {
+        NEXT_PUBLIC_PARENT_URL: process.env.NEXTAUTH_URL,
         DATABASE_URL: process.env.DATABASE_URL,
         NEXTAUTH_URL: process.env.NEXTAUTH_URL,
         NEXTAUTH_SECRET: process.env.NEXTAUTH_SECRET,
