@@ -1,27 +1,14 @@
-import { useSession } from 'next-auth/react'
 import { TwitchPlayer } from 'react-twitch-embed'
 
-import Error from '@/components/pages/Error'
-import Loader from '@/components/pages/Loader'
+export default function TwitchStreamWrapper({ name, size }: { name: string, size?: string }) {
 
-export default function TwitchStreamWrapper() {
-    const session = useSession()
-
-    if(session.status === 'loading' || !session.data) return (
-        <div className='h-full w-full flex justify-center items-center rounded-xl overflow-hidden lg:col-span-2 lg:row-span-2'>   
-            <Loader size='full' logo={false} />
-        </div>
-    )
-
-    if(!session.data.user.name) return (
-        <div className='h-full w-full flex justify-center items-center rounded-xl overflow-hidden lg:col-span-2 lg:row-span-2'>   
-            <Error size='full' />
-        </div>
-    )
+    if(size === 'screen') return <div className='h-80 w-full flex justify-center items-center rounded-xl overflow-hidden lg:col-span-2 lg:row-span-2'>
+        <TwitchPlayer id='small-screen-player' height={'100%'} width={'100%'} channel={name}  />
+    </div>
 
     return (
         <div className='h-full w-full flex justify-center items-center rounded-xl overflow-hidden lg:col-span-2 lg:row-span-2'>
-            <TwitchPlayer height={'100%'} width={'100%'} channel={session.data.user.name}  />
+            <TwitchPlayer id='big-screen-player' height={'100%'} width={'100%'} channel={name}  />
         </div>
     )
 }

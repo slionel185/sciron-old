@@ -58,6 +58,7 @@ model VerificationToken {
 
 model Command {
   id          String      @id @default(cuid())
+  active Boolean
   userId      String
   user        User        @relation(fields: [userId], references: [id], onDelete: Cascade)
   name        String

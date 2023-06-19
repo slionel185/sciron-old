@@ -15,7 +15,7 @@ export default function Home() {
     const router = useRouter()
     const session = useSession()
 
-    if(session.status === 'loading') return <Loader />
+    if(session.status === 'loading') return <Loader size='screen' logo={true} />
 
     return (
         <div className={`${inter.className} h-full lg:h-screen flex md:flex-col-reverse lg:flex-row justify-center items-center bg-base-100`}>

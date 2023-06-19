@@ -21,9 +21,9 @@ export default function Dashboard() {
     if(session.status === 'loading') return <Loader size='screen' logo={true} />
 
     return (
-        <div className='drawer h-screen'>
+        <div className='drawer h-screen max-h-screen'>
             <input id='dashboard-drawer' type='checkbox' className='drawer-toggle' />
-            <div className='drawer-content flex flex-col h-full'>
+            <div className='drawer-content flex flex-col h-full lg:overflow-hidden'>
                 <div className='w-full navbar bg-base-100'>
                     <div className='flex-none lg:hidden'>
                         <label htmlFor='dashboard-drawer' className='btn btn-square'>
@@ -47,10 +47,39 @@ export default function Dashboard() {
                         </div>
                     </div>
                 </div>
-                <div className='h-full flex flex-col lg:grid gap-4 grid-cols-3 grid-rows-3 p-4 bg-base-300'>
-                    <TwitchStreamWrapper />
-                    <TwitchChatWrapper />
-                    <CommandWrapper name={session.data!.user.name!} userId={session.data!.user.id} />
+                <div className='lg:hidden flex flex-1 flex-col p-4 gap-4'>
+                    <div className='collapse bg-base-300 collapse-arrow'>
+                        <input type='checkbox' /> 
+                        <div className='collapse-title font-medium text-xl'>
+                            Stream Preview
+                        </div>
+                        <div className='collapse-content'> 
+                            <TwitchStreamWrapper size='screen' name={session.data?.user.name!} />
+                        </div>
+                    </div>
+                    <div className='collapse bg-base-300 collapse-arrow'>
+                        <input type='checkbox' /> 
+                        <div className='collapse-title font-medium text-xl'>
+                            Stream Chat
+                        </div>
+                        <div className='collapse-content h-full'> 
+                            <TwitchChatWrapper size='screen' name={session.data?.user.name!} />
+                        </div>
+                    </div>
+                    <div className='collapse bg-base-300 collapse-arrow collapse-open'>
+                        <input type='checkbox' /> 
+                        <div className='collapse-title font-medium text-xl'>
+                            Commands
+                        </div>
+                        <div className='collapse-content h-full'>
+                            <CommandWrapper userId={session.data?.user.id!} />
+                        </div>
+                    </div>
+                </div>
+                <div className='h-full w-full hidden lg:grid gap-4 grid-cols-3 grid-rows-3 p-4 bg-base-300 overflow-hidden'>
+                    <TwitchStreamWrapper name={session.data?.user.name!} />
+                    <TwitchChatWrapper name={session.data?.user.name!} />
+                    <CommandWrapper userId={session.data?.user.id!} />
                 </div>
             </div>
             <div className='drawer-side'>

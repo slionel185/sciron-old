@@ -7,6 +7,7 @@ import { SessionProvider } from 'next-auth/react'
 
 import { trpc } from '@/utilities/trpc'
 import CreateCommandModal from '@/components/modals/CreateCommandModal'
+import UpdateCommandModal from '@/components/modals/UpdateCommandModal'
 
 function App({ Component, pageProps: { session, ...pageProps } }: AppProps) {
     return (
@@ -14,6 +15,7 @@ function App({ Component, pageProps: { session, ...pageProps } }: AppProps) {
             <Component {...pageProps} />
             <ToastContainer position='bottom-right' theme='dark' />
             <CreateCommandModal />
+            <UpdateCommandModal />
         </SessionProvider>
     )
 }
