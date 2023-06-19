@@ -7,6 +7,7 @@ export const create = procedure
     .input(
         z.object({
             userId: z.string(),
+            active: z.boolean(),
             name: z.string(),
             description: z.string(),
             commandType: z.enum([ 'REPLY', 'UTILITY', 'MODERATION' ]),
@@ -17,6 +18,7 @@ export const create = procedure
         const command = prisma.command.create({
             data: {
                 userId: opts.input.userId,
+                active: opts.input.active,
                 name: opts.input.name,
                 description: opts.input.description,
                 commandType: opts.input.commandType,
