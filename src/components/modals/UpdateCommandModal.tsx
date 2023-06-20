@@ -17,11 +17,6 @@ export default function UpdateCommandModal() {
                             <option>Moderation</option>
                             <option>Chat utility</option>
                         </select>
-                        <select className='w-full text-neutral-content select select-bordered'>
-                            <option>Reply in chat</option>
-                            <option>Moderation</option>
-                            <option>Chat utility</option>
-                        </select>
                     </div>
                 </div>
                 <div className='modal-action'>

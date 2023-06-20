@@ -20,7 +20,7 @@ export default function Dashboard() {
         if(session.status === 'unauthenticated') router.push('/')
     }, [session])
 
-    if(session.status === 'loading') return <Loader size='screen' logo={true} />
+    if(session.status === 'loading' || !session.data || !session.data.user.name) return <Loader size='screen' logo={true} />
 
     return (
         <div className='drawer h-screen max-h-screen'>

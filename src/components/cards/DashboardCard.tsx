@@ -15,7 +15,7 @@ export default function DashboardCard() {
                 <div className='w-56 flex flex-col justify-between overflow-hidden'>
                     <div className='flex flex-col justify-start items-center'>
                         <Image src={Logo} alt='Logo Image' height={64} />
-                        <h1 className='text-2xl text-primary uppercase italic font-black'>SCiron</h1>
+                        <h1 className='text-2xl text-primary uppercase italic font-black'>Sciron</h1>
                         <h2 className='text-sm'>{streamer}</h2>
                     </div>
 
