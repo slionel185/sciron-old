@@ -9,6 +9,8 @@ import CommandWrapper from '@/components/pages/CommandWrapper'
 import TwitchChatWrapper from '@/components/pages/TwitchChatWrapper'
 import TwitchStreamWrapper from '@/components/pages/TwitchStreamWrapper'
 
+import Logo from '@/../public/Logo.png'
+
 export default function Dashboard() {
 
     const router = useRouter()
@@ -31,7 +33,7 @@ export default function Dashboard() {
                         </label>
                     </div>
                     <div className='flex-1 px-2 mx-2 justify-between flex-row-reverse lg:flex-row lg:justify-start'>
-                        <Image src='/../public/Logo.png' alt='Logo' height={64} width={64} />
+                        <Image src={Logo} alt='Logo' height={64} width={64} />
                         <h1 className='text-3xl font-black italic uppercase text-primary'>sciron</h1>
                     </div>
                     <div className='flex-none hidden lg:block'>
