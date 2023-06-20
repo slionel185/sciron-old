@@ -28,7 +28,7 @@ export default function Home() {
                             <Image src={Logo} alt='Logo' height={200} />
                             <h1 className='text-7xl text-primary font-black italic'>SCIRON</h1>
                             <p className="py-3 pb-10">Integrated Twitch Bot and Dashboard</p>
-                            <button onClick={() => router.push('/plans')} className='btn btn-outline'>Get Started</button>
+                            <button onClick={() => router.push('/pricing')} className='btn btn-outline'>Get Started</button>
                         </div>
                     </div>
                 </div>
