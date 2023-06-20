@@ -55,13 +55,3 @@ export default function DashboardCard() {
         </div>
     )
 }
-
-/*
-<div className='h-full flex flex-col justify-center items-center p-4'>
-            <div id='animate-stay' className='card w-2/3 h-2/5 bg-base-200 grid grid-cols-3 grid-rows-3 gap-2'>
-                <div id='dashboard-card-player' className='flex flex-col col-span-2 row-span-2 justify-center items-center rounded-xl relative'>
-                    <Image src={'/DashboardCard/PlayerImg.png'} className='rounded-xl' fill alt='Dashboard Card Player Placeholder' />
-                </div>
-            </div>
-        </div>
-*/

@@ -5,7 +5,7 @@ const inter = Inter({ subsets: ['latin'] })
 
 export default function UpdateCommandModal() {
     return (
-        <dialog id='update_command_modal' className='modal modal-bottom sm:modal-middle'>
+        <dialog id='update_command_modal' className={`${inter.className} modal modal-bottom sm:modal-middle`}>
             <form method='dialog' className='modal-box bg-base-300'>
                  <h1 className='font-bold italic text-xl text-neutral-content pb-4'>Update command!</h1>
                 <div className='flex flex-col justify-center items-center gap-4'>
