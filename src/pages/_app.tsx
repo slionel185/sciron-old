@@ -10,6 +10,7 @@ import { SessionProvider } from 'next-auth/react'
 
 import { trpc } from '@/utilities/trpc'
 import Loader from '@/components/pages/Loader'
+import OpenBetaModal from '@/components/modals/OpenBetaModal'
 import CreateCommandModal from '@/components/modals/CreateCommandModal'
 import UpdateCommandModal from '@/components/modals/UpdateCommandModal'
 
@@ -35,6 +36,7 @@ function App({ Component, pageProps: { session, ...pageProps } }: AppProps) {
         <SessionProvider session={session}>
             {loading ? <Loader size='screen' logo={true} /> : <Component {...pageProps} />}
             <ToastContainer position='bottom-right' theme='dark' />
+            <OpenBetaModal />
             <CreateCommandModal />
             <UpdateCommandModal />
         </SessionProvider>

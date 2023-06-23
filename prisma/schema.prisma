@@ -63,6 +63,7 @@ model Command {
   user        User        @relation(fields: [userId], references: [id], onDelete: Cascade)
   name        String
   description String
+  createdAt        DateTime             @default(now())
   commandType CommandType
   args        String[]
 }

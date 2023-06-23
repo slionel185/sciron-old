@@ -18,7 +18,7 @@ export default function Home() {
 
     return (
         <div className={`${inter.className} h-full lg:h-screen flex md:flex-col-reverse lg:flex-row justify-center items-center bg-base-100`}>
-            <div className='h-screen w-full hidden md:flex flex-col pointer-events-none'>
+            <div className='h-screen w-full hidden md:flex flex-col'>
                 <DashboardCard />
             </div>
             <div className='h-screen md:h-auto lg:h-screen w-full flex flex-col justify-center items-center'>

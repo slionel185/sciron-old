@@ -1,16 +1,21 @@
 import Image from 'next/image'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { useRouter } from 'next/router'
 import { BsCheck2Circle } from 'react-icons/bs'
 import { IoIosCloseCircleOutline } from 'react-icons/io'
 
 import Logo from '@/../public/Logo.png'
+import { openOpenBetaModal } from '@/functions/openOpenBetaModa'
 
 export default function pricing() {
 
     const router = useRouter()
 
     const [showYearly, setShowYearly] = useState(false)
+
+    useEffect(() => {
+        openOpenBetaModal()
+    }, [])
 
     return (
         <div className='flex flex-col justify-center items-center pt-16 pb-4 xl:h-screen w-full gap-4'>
@@ -23,7 +28,7 @@ export default function pricing() {
                 <div id='free' className='card w-full md:w-96 xl:max-h-[36rem] lg:h-full bg-base-300 shadow-xl'>
                     <div className='card-body'>
                         <h2 className='w-full text-2xl text-center italic uppercase font-bold'>Starter</h2>
-                        <p className='w-full text-center text-xl'>Great for new audiences to have a space to grow</p>
+                        <p className='w-full text-center text-xl'>Built for all streamers, letting you focus on what's important!</p>
                         <h1 className='text-4xl h-full justify-center py-2 pb-3 italic text-center'>$0<span className='text-sm'>/mo</span></h1>
                         <ul className='px-4 flex flex-col gap-2'>
                             <li className='flex justify-start items-center gap-4'>
@@ -63,7 +68,7 @@ export default function pricing() {
                 <div id='pro' className='card w-full md:w-96 xl:max-h-[36rem] lg:h-full bg-base-300 shadow-xl'>
                     <div className='card-body'>
                         <h2 className='w-full text-2xl text-center italic uppercase font-bold'>Hobbyist</h2>
-                        <p className='w-full text-center text-xl'>Streamers that want to add some customization to their stream chat!</p>
+                        <p className='w-full text-center text-xl'>Designed for extra customization to be brough to your chat!</p>
                         <h1 className='text-4xl py-2 pb-3 italic text-center'>$5<span className='text-sm'>/mo</span></h1>
                         <ul className='px-4 flex flex-col gap-2'>
                             <li className='flex justify-start items-center gap-4'>
@@ -104,7 +109,7 @@ export default function pricing() {
                     <div className='card-body'>
                         <h2 className='w-full text-2xl text-center italic uppercase font-bold'>Professional</h2>
                         <p className='w-full text-center text-xl'>Made for the utilitarian who needs all the commands they can get!</p>
-                        <h1 className='text-4xl py-2 pb-3 italic text-center'>$15<span className='text-sm'>/mo</span></h1>
+                        <h1 className='text-4xl py-2 pb-3 italic text-center'>$10<span className='text-sm'>/mo</span></h1>
                         <ul className='px-4 flex flex-col gap-2'>
                             <li className='flex justify-start items-center gap-4'>
                                 <BsCheck2Circle className='text-xl text-success' />
