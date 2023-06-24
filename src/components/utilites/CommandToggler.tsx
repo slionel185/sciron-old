@@ -4,9 +4,9 @@ import { FaArrowRight } from 'react-icons/fa'
 
 import { openUpdateCommandModal } from '@/functions/openUpdateCommandModal'
 
-export default function CommandToggler({ command }: { command?: Command }) {
+export default function CommandToggler({ command }: { command: Command }) {
 
-    const [toggle, setToggle] = useState(command?.active ?? false)
+    const [toggle, setToggle] = useState(command.active ?? false)
     
     return (
         <div className='h-20 min-h-[5rem] flex justify-center items-center w-full rounded-lg bg-base-300 p-4'>
