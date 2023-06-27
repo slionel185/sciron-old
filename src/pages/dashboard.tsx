@@ -10,11 +10,13 @@ import TwitchChatWrapper from '@/components/pages/TwitchChatWrapper'
 import TwitchStreamWrapper from '@/components/pages/TwitchStreamWrapper'
 
 import Logo from '@/../public/Logo.png'
+import { trpc } from '@/utilities/trpc'
 
 export default function Dashboard() {
-
     const router = useRouter()
     const session = useSession()
+
+    const {} = trpc.botJoin.useQuery({ channel: session.status === 'authenticated'? session.data.user.name! : '' })
 
     useEffect(() => {
         if(session.status === 'unauthenticated') router.push('/')
