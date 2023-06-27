@@ -13,7 +13,12 @@ export const fetch = procedure
         const commands = prisma.command.findMany({
             where: {
                 userId: opts.input.userId
-            }
+            },
+            orderBy: [
+                {
+                    createdAt: 'asc'
+                }
+            ]
         })
 
         return commands

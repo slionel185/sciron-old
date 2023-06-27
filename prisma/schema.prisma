@@ -37,8 +37,14 @@ model Session {
   user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
 }
 
+enum AccountLevel {
+  STARTER
+  HOBBYIST
+  PROFESSIONAL
+}
 model User {
   id            String    @id @default(cuid())
+  accountLevel  AccountLevel @default(STARTER)
   name          String
   email         String?   @unique
   emailVerified DateTime?

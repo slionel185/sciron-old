@@ -1,10 +1,14 @@
 import { router } from '@/server/trpc'
 import { fetch } from '@/server/routers/commands/fetch'
 import { create } from '@/server/routers/commands/create'
+import { update } from '@/server/routers/commands/update'
+import { fetchById } from '@/server/routers/commands/fetchById'
 
 export const appRouter = router({
     fetchCommands: fetch,
-    createCommand: create
+    createCommand: create,
+    updateCommandById: update,
+    fetchCommandById: fetchById
 })
 
 export type AppRouter = typeof appRouter

@@ -33,7 +33,7 @@ export default function Dashboard() {
                         </label>
                     </div>
                     <div className='flex-1 px-2 mx-2 justify-between flex-row-reverse lg:flex-row lg:justify-start'>
-                        <Image src={Logo} alt='Logo' height={64} width={64} />
+                        <Image src={Logo} alt='Logo' height={64} width={64} priority />
                         <h1 className='text-3xl font-black italic uppercase text-primary'>sciron</h1>
                     </div>
                     <div className='flex-none hidden lg:block'>
@@ -88,7 +88,7 @@ export default function Dashboard() {
                 <label htmlFor='dashboard-drawer' className='drawer-overlay'></label>
                 <div className='menu p-4 w-80 h-full flex flex-col justify-between items-center bg-base-200'>
                     <div className='flex flex-col justify-center items-center'>
-                        <Image src='/../public/Logo.png' alt='Logo' height={128} width={128} />
+                        <Image src='/../public/Logo.png' alt='Logo' height={128} width={128} priority />
                         <h1 className='text-5xl font-black italic uppercase text-primary'>sciron</h1>
                         <h1 className='text-xl font-bold'>{session.data?.user.name}</h1>
                     </div>

@@ -3,8 +3,6 @@ const inter = Inter({ subsets: ['latin'] })
 
 import { useEffect, useState } from 'react'
 import { useSession } from 'next-auth/react'
-import { getQueryKey } from '@trpc/react-query'
-import { useQueryClient } from '@tanstack/react-query'
 
 import { trpc } from '@/utilities/trpc'
 import Loader from '@/components/pages/Loader'
@@ -14,7 +12,7 @@ export default function CreateCommandModal() {
     const createCommandMutation = trpc.createCommand.useMutation()
 
     const session = useSession()
-    const queryClient = useQueryClient()
+    const context = trpc.useContext()
 
     const [name, setName] = useState('')
     const [description, setDescription] = useState('')
@@ -25,12 +23,19 @@ export default function CreateCommandModal() {
 
     const [commandArgs, setCommandArgs] = useState<string[]>([])
 
-    const createCommand = async () => {
+    useEffect(() => {
         if(commandType === 'REPLY') setCommandArgs([replyContent])
         if(commandType === 'UTILITY') setCommandArgs([utilityType])
         if(commandType === 'MODERATION') setCommandArgs([moderateType])
+    }, [commandType, replyContent, utilityType, moderateType])
+    
+    useEffect(() => {
+        if(createCommandMutation.isError) console.log('Something broke.')
+        if(createCommandMutation.isSuccess) context.fetchCommands.invalidate()
+    }, [createCommandMutation])
 
-         createCommandMutation.mutate({
+    const createCommand = async () => {
+        createCommandMutation.mutate({
             userId: session.data!.user.id!,
             active: true,
             name: name,
@@ -40,10 +45,7 @@ export default function CreateCommandModal() {
         })
     }
 
-    useEffect(() => {
-        if(createCommandMutation.isError) console.log('Something broke.')
-        if(createCommandMutation.isSuccess) queryClient.invalidateQueries(['fetchCommand'])
-    }, [createCommandMutation])
+    
 
     return (
         <dialog id='create_command_modal' className={`${inter.className} modal modal-bottom sm:modal-middle`}>
