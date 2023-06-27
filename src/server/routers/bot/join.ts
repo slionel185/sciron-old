@@ -8,7 +8,7 @@ export const join = procedure
             channel: z.string()
         })
     )
-    .mutation(async (opts) => {
+    .query(async (opts) => {
         const res = await fetch('https://bot.sciron.app/api/v1/bot/action/join', {
             method: 'POST',
             headers: {
