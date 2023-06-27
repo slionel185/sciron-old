@@ -11,7 +11,7 @@ export default function CommandToggler({ command }: { command: Command }) {
 
     const { setCommand } = useCommandStore()
 
-    const [toggle, setToggle] = useState(command.active ?? false)
+    const [toggle, setToggle] = useState(command.active)
 
     useEffect(() => {
         toggleCommandMutation.mutate({ id: command.id, active: toggle })
@@ -23,7 +23,7 @@ export default function CommandToggler({ command }: { command: Command }) {
     }
 
     const handleRunClick = () => {
-
+        console.log(toggle)
     }
 
     return (
