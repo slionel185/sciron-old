@@ -18,6 +18,7 @@ export default function UpdateCommandModal() {
 
     const { command, setCommand } = useCommandStore()
     const updateCommandMutation = trpc.updateCommandById.useMutation()
+    const deleteCommandMutation = trpc.deleteCommandById.useMutation()
 
     const { data, isError } = trpc.fetchCommandById.useQuery({ commandId: command })
 
@@ -51,6 +52,11 @@ export default function UpdateCommandModal() {
         if(updateCommandMutation.isSuccess) context.fetchCommands.invalidate()
     }, [updateCommandMutation])
 
+    useEffect(() => {
+        if(deleteCommandMutation.isError) console.log('Something broke.')
+        if(deleteCommandMutation.isSuccess) context.fetchCommands.invalidate()
+    }, [deleteCommandMutation])
+
     const updateCommand = () => {
         updateCommandMutation.mutate({
             id: command,
@@ -63,6 +69,9 @@ export default function UpdateCommandModal() {
         setCommand('')
     }
 
+    const deleteCommand = () => {
+        deleteCommandMutation.mutate({ id: command })
+    }
 
     return (
         <dialog id='update_command_modal' className={`${inter.className} modal modal-bottom sm:modal-middle`}>
@@ -121,8 +130,9 @@ export default function UpdateCommandModal() {
                     </div>}
                 </div>
                 <div className='modal-action'>
+                    <button onClick={deleteCommand} className='btn btn-error'>Delete</button>
                     <button onClick={updateCommand} className='btn btn-success'>Update</button>
-                    <button className='btn btn-error'>Cancel</button>
+                    <button className='btn'>Cancel</button>
                 </div>
             </form>}
             {(session.status === 'loading' || isError) && <Loader size='full' logo={false} />}
