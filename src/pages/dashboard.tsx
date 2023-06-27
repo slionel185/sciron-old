@@ -16,10 +16,11 @@ export default function Dashboard() {
     const router = useRouter()
     const session = useSession()
 
-    const {} = trpc.botJoin.useQuery({ channel: session.status === 'authenticated'? session.data.user.name! : '' })
+    const joinChannelMutation = trpc.botJoin.useMutation()
 
     useEffect(() => {
         if(session.status === 'unauthenticated') router.push('/')
+        if(session.status === 'authenticated') joinChannelMutation.mutate({ channel: session.data.user.name! })
     }, [session])
 
     if(session.status === 'loading' || !session.data || !session.data.user.name) return <Loader size='screen' logo={true} />
