@@ -17,7 +17,7 @@ export const appRouter = router({
     fetchCommandById: fetchById,
     deleteCommandById: deleteById,
 
-    botJoin: join
+    botJoin: join,
 })
 
 export type AppRouter = typeof appRouter

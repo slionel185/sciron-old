@@ -9,7 +9,7 @@ export const join = procedure
         })
     )
     .query(async (opts) => {
-        const res = await fetch('https://bot.sciron.app/api/v1/bot/action/join', {
+        const res = await fetch(`https://bot.sciron.app/trpc?input=${encodeURIComponent(JSON.stringify({ channelName: opts.input.channel }))}`, {
             method: 'POST',
             headers: {
                 "Content-Type": "application/json"

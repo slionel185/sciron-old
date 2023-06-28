@@ -1,4 +1,4 @@
-import type { NextAuthOptions } from 'next-auth'
+import type { Account, NextAuthOptions, Profile, TokenSet, User } from 'next-auth'
 import type { Adapter } from 'next-auth/adapters'
 
 import NextAuth from 'next-auth/next'
@@ -10,13 +10,13 @@ import { prisma } from '@/utilities/prisma'
 
 export const authOptions: NextAuthOptions = {
     callbacks: {
-        session: ({ session, user }) => ({
+        session: ({ session, user }) =>  { console.log(session,user); return ({
             ...session,
             user: {
                 ...session.user,
                 id: user.id,
             },
-        }),
+        })},
     },
     adapter: PrismaAdapter(prisma) as Adapter,
     providers: [
