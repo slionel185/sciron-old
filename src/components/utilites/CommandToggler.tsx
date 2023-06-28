@@ -28,7 +28,7 @@ export default function CommandToggler({ command }: { command: Command }) {
 
     return (
         <div className='h-20 min-h-[5rem] flex justify-center items-center w-full rounded-lg bg-base-300 p-4'>
-            <input value={`${toggle}`} onChange={() => setToggle(toggle => !toggle)} type='checkbox' className='toggle toggle-secondary toggle-md' />
+            <input checked={toggle} onChange={() => setToggle(toggle => !toggle)} type='checkbox' className='toggle toggle-secondary toggle-md' />
             <div className='flex-1 px-2 whitespace-nowrap overflow-hidden'>
                 <h1 onClick={handleNameClick} className='btn bg-base-300 border-none text-xl text-left normal-case text-ellipsis'>{command?.name ?? 'Command name'}</h1>
             </div>
